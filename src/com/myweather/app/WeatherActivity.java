@@ -65,8 +65,8 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		temp1Text = (TextView) findViewById(R.id.temp1);
 		temp2Text = (TextView) findViewById(R.id.temp2);
 		currentDateText = (TextView) findViewById(R.id.current_date);
-		// switchCity = (Button) findViewById(R.id.switch_city);
-		// refreshWeather = (Button) findViewById(R.id.refresh_weather);
+		switchCity = (Button) findViewById(R.id.switch_city);
+		refreshWeather = (Button) findViewById(R.id.refresh_weather);
 		String countyCode = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCode)) {
 			// 有县级代号时就去查询天气
@@ -78,29 +78,29 @@ public class WeatherActivity extends Activity implements OnClickListener {
 			// 没有县级代号时就直接显示本地天气
 			showWeather();
 		}
-		//switchCity.setOnClickListener(this);
-		//refreshWeather.setOnClickListener(this);
+		switchCity.setOnClickListener(this);
+		refreshWeather.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		// case R.id.switch_city:
-		// Intent intent = new Intent(this, ChooseAreaActivity.class);
-		// intent.putExtra("from_weather_activity", true);
-		// startActivity(intent);
-		// finish();
-		// break;
-		// case R.id.refresh_weather:
-		// publishText.setText("同步中...");
-		// SharedPreferences prefs = PreferenceManager
-		// .getDefaultSharedPreferences(this);
-		// String weatherCode = prefs.getString("weather_code", "");
-		// if (!TextUtils.isEmpty(weatherCode)) {
-		// queryWeatherInfo(weatherCode);
-		// }
-		// break;
+		 case R.id.switch_city:
+		 Intent intent = new Intent(this, ChooseAreaActivity.class);
+		 intent.putExtra("from_weather_activity", true);
+		 startActivity(intent);
+		 finish();
+		 break;
+		 case R.id.refresh_weather:
+		 publishText.setText("同步中...");
+		 SharedPreferences prefs = PreferenceManager
+		 .getDefaultSharedPreferences(this);
+		 String weatherCode = prefs.getString("weather_code", "");
+		 if (!TextUtils.isEmpty(weatherCode)) {
+		 queryWeatherInfo(weatherCode);
+		 }
+		 break;
 		default:
 			break;
 		}
