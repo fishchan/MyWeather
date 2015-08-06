@@ -1,4 +1,4 @@
-package com.myweather.app;
+package com.myweather.app.model;
 
 public class Province {
 	 private int id;

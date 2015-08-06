@@ -1,4 +1,9 @@
-package com.myweather.app;
+package com.myweather.app.service;
+
+import com.myweather.app.receiver.AutoUpdateReceiver;
+import com.myweather.app.util.HttpCallbackListener;
+import com.myweather.app.util.HttpUtil;
+import com.myweather.app.util.Utility;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -13,7 +18,6 @@ public class AutoUpdateService extends Service {
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -1,7 +1,18 @@
-package com.myweather.app;
+package com.myweather.app.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.myweather.app.R;
+import com.myweather.app.R.id;
+import com.myweather.app.R.layout;
+import com.myweather.app.database.MyWeatherDB;
+import com.myweather.app.model.City;
+import com.myweather.app.model.County;
+import com.myweather.app.model.Province;
+import com.myweather.app.util.HttpCallbackListener;
+import com.myweather.app.util.HttpUtil;
+import com.myweather.app.util.Utility;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -24,11 +35,12 @@ public class ChooseAreaActivity extends Activity {
 	public static final int LEVEL_PROVINCE = 0;
 	public static final int LEVEL_CITY = 1;
 	public static final int LEVEL_COUNTY = 2;
+	
 	private ProgressDialog progressDialog;
 	private TextView titleText;
 	private ListView listView;
 	private ArrayAdapter<String> adapter;
-	private CoolWeatherDB coolWeatherDB;
+	private MyWeatherDB myWeatherDB;
 	private List<String> dataList = new ArrayList<String>();
 	/**
 	 * 省列表
@@ -63,6 +75,7 @@ public class ChooseAreaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		isFromWeatherActivity = getIntent().getBooleanExtra(
 				"from_weather_activity", false);
 		SharedPreferences prefs = PreferenceManager
@@ -74,6 +87,7 @@ public class ChooseAreaActivity extends Activity {
 			finish();
 			return;
 		}
+		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.choose_area);
 
@@ -83,7 +97,7 @@ public class ChooseAreaActivity extends Activity {
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, dataList);
 		listView.setAdapter(adapter);
-		coolWeatherDB = CoolWeatherDB.getInstance(this);
+		myWeatherDB = MyWeatherDB.getInstance(this);
 
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -106,14 +120,15 @@ public class ChooseAreaActivity extends Activity {
 				}
 			}
 		});
-		queryProvinces(); // 加载省级数据
+		// 加载省级数据
+		queryProvinces(); 
 	}
 
 	/**
 	 * 查询全国所有的省,优先从数据库查询,如果没有查询到再去服务器上查询。
 	 */
 	private void queryProvinces() {
-		provinceList = coolWeatherDB.loadProvinces();
+		provinceList = myWeatherDB.loadProvinces();
 		if (provinceList.size() > 0) {
 			dataList.clear();
 			for (Province province : provinceList) {
@@ -132,7 +147,7 @@ public class ChooseAreaActivity extends Activity {
 	 * 查询选中省内所有的市,优先从数据库查询,如果没有查询到再去服务器上查询。
 	 */
 	private void queryCities() {
-		cityList = coolWeatherDB.loadCities(selectedProvince.getId());
+		cityList = myWeatherDB.loadCities(selectedProvince.getId());
 		if (cityList.size() > 0) {
 			dataList.clear();
 			for (City city : cityList) {
@@ -151,7 +166,7 @@ public class ChooseAreaActivity extends Activity {
 	 * 查询选中市内所有的县,优先从数据库查询,如果没有查询到再去服务器上查询。
 	 */
 	private void queryCounties() {
-		countyList = coolWeatherDB.loadCounties(selectedCity.getId());
+		countyList = myWeatherDB.loadCounties(selectedCity.getId());
 		if (countyList.size() > 0) {
 			dataList.clear();
 			for (County county : countyList) {
@@ -183,13 +198,13 @@ public class ChooseAreaActivity extends Activity {
 			public void onFinish(String response) {
 				boolean result = false;
 				if ("province".equals(type)) {
-					result = Utility.handleProvincesResponse(coolWeatherDB,
+					result = Utility.handleProvincesResponse(myWeatherDB,
 							response);
 				} else if ("city".equals(type)) {
-					result = Utility.handleCitiesResponse(coolWeatherDB,
+					result = Utility.handleCitiesResponse(myWeatherDB,
 							response, selectedProvince.getId());
 				} else if ("county".equals(type)) {
-					result = Utility.handleCountiesResponse(coolWeatherDB,
+					result = Utility.handleCountiesResponse(myWeatherDB,
 							response, selectedCity.getId());
 				}
 				if (result) {

@@ -1,4 +1,4 @@
-package com.myweather.app;
+package com.myweather.app.util;
 
 public interface HttpCallbackListener {
 	void onFinish(String response);

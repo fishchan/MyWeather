@@ -1,4 +1,4 @@
-package com.myweather.app;
+package com.myweather.app.util;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

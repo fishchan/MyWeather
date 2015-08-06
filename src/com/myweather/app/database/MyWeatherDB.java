@@ -1,44 +1,46 @@
-package com.myweather.app;
+package com.myweather.app.database;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.myweather.app.CoolWeatherOpenHelper;
+import com.myweather.app.model.City;
+import com.myweather.app.model.County;
+import com.myweather.app.model.Province;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class CoolWeatherDB {
+public class MyWeatherDB {
 	/**
 	 * 数据库名
 	 */
-	public static final String DB_NAME = "cool_weather";
+	public static final String DB_NAME = "my_weather";
 	/**
 	 * 数据库版本
 	 */
 	public static final int VERSION = 1;
-	private static CoolWeatherDB coolWeatherDB;
+	private static MyWeatherDB myWeatherDB;
 	private SQLiteDatabase db;
 
 	/**
 	 * 将构造方法私有化
 	 */
-	private CoolWeatherDB(Context context) {
-		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context,
+	private MyWeatherDB(Context context) {
+		MyWeatherOpenHelper dbHelper = new MyWeatherOpenHelper(context,
 				DB_NAME, null, VERSION);
 		db = dbHelper.getWritableDatabase();
 	}
 
 	/**
-	 * 获取CoolWeatherDB的实例。
+	 * 获取MyWeatherDB的实例。
 	 */
-	public synchronized static CoolWeatherDB getInstance(Context context) {
-		if (coolWeatherDB == null) {
-			coolWeatherDB = new CoolWeatherDB(context);
+	public synchronized static MyWeatherDB getInstance(Context context) {
+		if (myWeatherDB == null) {
+			myWeatherDB = new MyWeatherDB(context);
 		}
-		return coolWeatherDB;
+		return myWeatherDB;
 	}
 
 	/**
