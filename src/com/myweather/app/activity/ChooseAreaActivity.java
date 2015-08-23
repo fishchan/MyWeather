@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.myweather.app.R;
-import com.myweather.app.R.id;
-import com.myweather.app.R.layout;
+import com.myweather.app.adapter.CityListAdapter;
 import com.myweather.app.database.MyWeatherDB;
 import com.myweather.app.model.City;
 import com.myweather.app.model.County;
@@ -21,12 +20,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +36,7 @@ public class ChooseAreaActivity extends Activity {
 	private ProgressDialog progressDialog;
 	private TextView titleText;
 	private ListView listView;
-	private ArrayAdapter<String> adapter;
+	private CityListAdapter adapter;
 	private MyWeatherDB myWeatherDB;
 	private List<String> dataList = new ArrayList<String>();
 	/**
@@ -80,13 +77,14 @@ public class ChooseAreaActivity extends Activity {
 				"from_weather_activity", false);
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		// 已经选择了城市且不是从WeatherActivity跳转过来,才会直接跳转到 WeatherActivity
-		if (prefs.getBoolean("city_selected", false) && !isFromWeatherActivity) {
-			Intent intent = new Intent(this, WeatherActivity.class);
-			startActivity(intent);
-			finish();
-			return;
-		}
+		// 已经选择了城市且不是从WeatherActivity跳转过来,才会直接跳转到WeatherActivity
+		
+//		if (prefs.getBoolean("city_selected", false) && !isFromWeatherActivity) {
+//			Intent intent = new Intent(this, WeatherActivity.class);
+//			startActivity(intent);
+//			finish();
+//			return;
+//		}
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.choose_area);
@@ -94,8 +92,7 @@ public class ChooseAreaActivity extends Activity {
 		listView = (ListView) findViewById(R.id.list_view);
 		titleText = (TextView) findViewById(R.id.title_text);
 
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, dataList);
+		adapter = new CityListAdapter(this,dataList);
 		listView.setAdapter(adapter);
 		myWeatherDB = MyWeatherDB.getInstance(this);
 
@@ -272,10 +269,10 @@ public class ChooseAreaActivity extends Activity {
 		} else if (currentLevel == LEVEL_CITY) {
 			queryProvinces();
 		} else {
-			if (isFromWeatherActivity) {
-				Intent intent = new Intent(this, WeatherActivity.class);
-				startActivity(intent);
-			}
+//			if (isFromWeatherActivity) {
+//				Intent intent = new Intent(this, WeatherActivity.class);
+//				startActivity(intent);
+//			}
 			finish();
 		}
 	}

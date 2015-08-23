@@ -2,8 +2,30 @@
 <resources>
 
     <string name="app_name">我的天气</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_weather">WeatherActivity</string>
-
+     <string name="action_settings">设置</string>
+     <string name="chooseTv">请选择</string>
+    <string name="manualBtn">手动设置城市</string>
+    <string name="locationBtn">自动定位城市</string>
+    
+	<string name="daytime">白天</string>
+	<string name="night">夜间</string>
+	<string name="year">年</string>
+	<string name="month">月</string>
+	<string name="day">日</string>
+	<string name="current_date">今天</string>
+	<string name="second_date">明天</string>
+	<string name="third_date">后天</string>
+	<string name="sunrise">日出</string>
+	<string name="sunset">日落</string>
+	<string name="publish_text">发布</string>
+	<string name="turn_to">/</string>
+	
+	<string name="Monday">星期一</string>
+	<string name="Tuesday">星期二</string>
+	<string name="Wednesday">星期三</string>
+	<string name="Thursday">星期四</string>
+	<string name="Friday">星期五</string>
+	<string name="Saturday">星期六</string>
+	<string name="Sunday">星期日</string>
+	    
 </resources>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.myweather.app.model.City;
 import com.myweather.app.model.County;
+import com.myweather.app.model.CodeBean;
 import com.myweather.app.model.Province;
 
 import android.content.ContentValues;
@@ -145,4 +146,65 @@ public class MyWeatherDB {
 		}
 		return list;
 	}
+
+	/**
+	 * 从数据库读取某天气现象编号的信息。
+	 */
+	public CodeBean.WeatherPhenomenon loadWeatherPhenomenon(String code) {
+		CodeBean.WeatherPhenomenon wphe = new CodeBean.WeatherPhenomenon();
+		Cursor cursor = db.query("WeatherPhenomenon", null, "wphe_code = ?",
+				new String[] { code }, null, null, null);
+		if (cursor.moveToFirst()) {
+			do {
+				wphe.setWphe_cname(cursor.getString(cursor
+						.getColumnIndex("wphe_cname")));
+				wphe.setWphe_ename(cursor.getString(cursor
+						.getColumnIndex("wphe_ename")));
+				wphe.setWphe_code(cursor.getString(cursor
+						.getColumnIndex("wphe_code")));
+			} while (cursor.moveToNext());
+		}
+		return wphe;
+	}
+
+	/**
+	 * 从数据库读取某风向编号的信息。
+	 */
+	public CodeBean.WindDirection loadWindDirection(String code) {
+		CodeBean.WindDirection wdir = new CodeBean.WindDirection();
+		Cursor cursor = db.query("WindDirection", null, "wdir_code = ?",
+				new String[] { code }, null, null, null);
+		if (cursor.moveToFirst()) {
+			do {
+				wdir.setWdir_cname(cursor.getString(cursor
+						.getColumnIndex("wdir_cname")));
+				wdir.setWdir_ename(cursor.getString(cursor
+						.getColumnIndex("wdir_ename")));
+				wdir.setWdir_code(cursor.getString(cursor
+						.getColumnIndex("wdir_code")));
+			} while (cursor.moveToNext());
+		}
+		return wdir;
+	}
+
+	/**
+	 * 从数据库读取某风力编号的信息。
+	 */
+	public CodeBean.WindPower loadWindPower(String code) {
+		CodeBean.WindPower wpow = new CodeBean.WindPower();
+		Cursor cursor = db.query("WindPower", null, "wpow_code = ?",
+				new String[] { code }, null, null, null);
+		if (cursor.moveToFirst()) {
+			do {
+				wpow.setWpow_cname(cursor.getString(cursor
+						.getColumnIndex("wpow_cname")));
+				wpow.setWpow_ename(cursor.getString(cursor
+						.getColumnIndex("wpow_ename")));
+				wpow.setWpow_code(cursor.getString(cursor
+						.getColumnIndex("wpow_code")));
+			} while (cursor.moveToNext());
+		}
+		return wpow;
+	}
+
 }

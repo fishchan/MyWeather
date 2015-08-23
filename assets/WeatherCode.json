@@ -1,0 +1,63 @@
+{ "weatherphenomenon": [
+
+{ "wphe_cname": "晴", "wphe_ename":"Sunny", "wphe_code": "00" },
+{ "wphe_cname": "多云", "wphe_ename":"Cloudy", "wphe_code": "01" },
+{ "wphe_cname": "阴", "wphe_ename":"Overcast", "wphe_code": "02" },
+{ "wphe_cname": "阵雨", "wphe_ename":"Shower", "wphe_code": "03" },
+{ "wphe_cname": "雷阵雨", "wphe_ename":"Thundershower", "wphe_code": "04" },
+{ "wphe_cname": "雷阵雨伴有冰雹", "wphe_ename":"Thundershower with hail", "wphe_code": "05" },
+{ "wphe_cname": "雨夹雪", "wphe_ename":"Sleet", "wphe_code": "06" },
+{ "wphe_cname": "小雨", "wphe_ename":"Light rain", "wphe_code": "07" },
+{ "wphe_cname": "中雨", "wphe_ename":"Moderate rain", "wphe_code": "08" },
+{ "wphe_cname": "大雨", "wphe_ename":"Heavy rain", "wphe_code": "09" },
+{ "wphe_cname": "暴雨", "wphe_ename":"Storm", "wphe_code": "10" }
+{ "wphe_cname": "大暴雨", "wphe_ename":"Heavy storm", "wphe_code": "11" }
+{ "wphe_cname": "特大暴雨", "wphe_ename":"Severe storm", "wphe_code": "12" }
+{ "wphe_cname": "阵雪", "wphe_ename":"Snow flurry", "wphe_code": "13" }
+{ "wphe_cname": "小雪", "wphe_ename":"Light snow", "wphe_code": "14" }
+{ "wphe_cname": "中雪", "wphe_ename":"Moderate snow", "wphe_code": "15" }
+{ "wphe_cname": "大雪", "wphe_ename":"Heavy snow", "wphe_code": "16" }
+{ "wphe_cname": "暴雪", "wphe_ename":"Snowstorm", "wphe_code": "17" }
+{ "wphe_cname": "雾", "wphe_ename":"Foggy", "wphe_code": "18" }
+{ "wphe_cname": "冻雨", "wphe_ename":"Ice rain", "wphe_code": "19" }
+{ "wphe_cname": "沙尘暴", "wphe_ename":"Duststorm", "wphe_code": "20" }
+{ "wphe_cname": "小到中雨", "wphe_ename":"Light to moderate rain", "wphe_code": "21" }
+{ "wphe_cname": "中到大雨", "wphe_ename":"Moderate to heavy rain", "wphe_code": "22" }
+{ "wphe_cname": "大到暴雨", "wphe_ename":"Heavy rain to storm", "wphe_code": "23" }
+{ "wphe_cname": "暴雨到大暴雨", "wphe_ename":"Storm to heavy storm", "wphe_code": "24" }
+{ "wphe_cname": "大暴雨到特大暴雨", "wphe_ename":"Heavy to severe storm", "wphe_code": "25" }
+{ "wphe_cname": "小到中雪", "wphe_ename":"Light to moderate snow", "wphe_code": "26" }
+{ "wphe_cname": "中到大雪", "wphe_ename":"Moderate to heavy snow", "wphe_code": "27" }
+{ "wphe_cname": "大到暴雪", "wphe_ename":"Heavy snow to snowstorm", "wphe_code": "28" }
+{ "wphe_cname": "浮尘", "wphe_ename":"Dust", "wphe_code": "29" }
+{ "wphe_cname": "扬沙", "wphe_ename":"Sand", "wphe_code": "30" }
+{ "wphe_cname": "强沙尘暴", "wphe_ename":"Sandstorm", "wphe_code": "31" }
+{ "wphe_cname": "霾", "wphe_ename":"Haze", "wphe_code": "53" }
+{ "wphe_cname": "无", "wphe_ename":"Unknown", "wphe_code": "99" }
+],
+
+"winddirection": [
+{ "wdir_cname": "无持续风向", "wdir_ename": "No wind", "wdir_code": "0" },
+{ "wdir_cname": "东北风", "wdir_ename": "Northeast", "wdir_code": "1" },
+{ "wdir_cname": "东风", "wdir_ename": "East", "wdir_code": "2" }
+{ "wdir_cname": "东南风", "wdir_ename": "Southeast", "wdir_code": "3" }
+{ "wdir_cname": "南风", "wdir_ename": "South", "wdir_code": "4" }
+{ "wdir_cname": "西南风", "wdir_ename": "Southwest", "wdir_code": "5" }
+{ "wdir_cname": "西风", "wdir_ename": "West", "wdir_code": "6" }
+{ "wdir_cname": "西北风", "wdir_ename": "Northwest", "wdir_code": "7" }
+{ "wdir_cname": "北风", "wdir_ename": "North", "wdir_code": "8" }
+{ "wdir_cname": "旋转风", "wdir_ename": "Whirl wind", "wdir_code": "9" }
+],
+
+"windpower": [
+{ "wpow_cname": "微风", "wpow_ename": "<10m/h", "wpow_code": "0" },
+{ "wpow_cname": "3-4 级", "wpow_ename": "10~17m/h", "wpow_code": "1" }
+{ "wpow_cname": "4-5 级", "wpow_ename": "17~25m/h", "wpow_code": "2" }
+{ "wpow_cname": "5-6 级", "wpow_ename": "25~34m/h", "wpow_code": "3" }
+{ "wpow_cname": "6-7 级", "wpow_ename": "34~43m/h", "wpow_code": "4" }
+{ "wpow_cname": "7-8 级", "wpow_ename": "43~54m/h", "wpow_code": "5" }
+{ "wpow_cname": "8-9 级", "wpow_ename": "54~65m/h", "wpow_code": "6" }
+{ "wpow_cname": "9-10 级", "wpow_ename": "65~77m/h", "wpow_code": "7" }
+{ "wpow_cname": "10-11 级", "wpow_ename": "77~89m/h", "wpow_code": "8" }
+{ "wpow_cname": "11-12 级", "wpow_ename": "89~102m/h", "wpow_code": "9" }
+] }
